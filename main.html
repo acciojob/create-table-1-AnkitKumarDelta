@@ -10,14 +10,30 @@
 
 <body>
 	<table id="sampleTable" border="1"> 
-		<tr><td>Row1 cell1</td> 
-		<td>Row1 cell2</td></tr> 
-		<tr><td>Row2 cell1</td> 
-		<td>Row2 cell2</td></tr> 
+		<tr>
+		<td>Row1 cell1</td> 
+		<td>Row1 cell2</td>
+		</tr> 
+		<tr>
+		<td>Row2 cell1</td> 
+		<td>Row2 cell2</td>
+		</tr> 
 	</table><br> 
 	
 	<input type="button" onclick="insert_Row()" value="Insert row">  
-    <script type="text/javascript" src="./script.js">
+    <script>
+		let table = document.getElementById("sampleTable");
+
+function insert_Row() {
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  let td2 = document.createElement("td");
+	td1.innerText = "New Cell1";
+	td2.innerText = "New Cell2";
+	tr.append(td1,td2);
+	table.insertBefore(tr,table.firstElementChild);
+}
+
 </script>
 
 </body>
