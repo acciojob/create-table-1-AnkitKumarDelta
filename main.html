@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<meta charset=utf-8 /> 
+	<meta charset="utf-8" /> 
 	<title>Insert row in a table</title> 
 	<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 	<table id="sampleTable" border="1"> 
 		<tr>
-		<td>Row1 cell1</td> 
-		<td>Row1 cell2</td>
+			<td>Row1 cell1</td> 
+			<td>Row1 cell2</td>
 		</tr> 
 		<tr>
-		<td>Row2 cell1</td> 
-		<td>Row2 cell2</td>
+			<td>Row2 cell1</td> 
+			<td>Row2 cell2</td>
 		</tr> 
 	</table><br> 
 	
 	<input type="button" onclick="insert_Row()" value="Insert row">  
+
     <script>
-		let table = document.getElementById("sampleTable");
+		function insert_Row() {
+			let table = document.getElementById("sampleTable");
 
-function insert_Row() {
-  let tr = document.createElement("tr");
-  let td1 = document.createElement("td");
-  let td2 = document.createElement("td");
-	td1.innerText = "New Cell1";
-	td2.innerText = "New Cell2";
-	tr.append(td1,td2);
-	table.insertBefore(tr,table.firstElementChild);
-}
+			// Ensure tbody is used
+			let tbody = table.tBodies[0] || table;
 
-</script>
+			let tr = document.createElement("tr");
+			let td1 = document.createElement("td");
+			let td2 = document.createElement("td");
 
+			td1.innerText = "New Cell1";
+			td2.innerText = "New Cell2";
+
+			tr.append(td1, td2);
+
+			// Insert at the top of tbody
+			tbody.insertBefore(tr, tbody.firstElementChild);
+		}
+	</script>
 </body>
-
 </html>
